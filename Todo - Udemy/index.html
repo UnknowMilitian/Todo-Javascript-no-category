@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/media.css" />
+    <title>Todo Front-end</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="glass">
+        <h1>Todo-List</h1>
+        <form name="addTask">
+          <input
+            name="title"
+            id="title"
+            type="text"
+            placeholder="Title of Todo"
+          />
+          <textarea name="body" id="body" placeholder="Body of Todo"></textarea>
+          <input name="submit" id="submit" type="submit" value="Submit" />
+        </form>
+      </div>
+      <div class="contents">
+        <!-- Repeat the following block dynamically based on data -->
+        <!-- End of repeated block -->
+      </div>
+    </div>
+    <!-- JavaScript Scripts -->
+    <script src="./assets/main.js"></script>
+  </body>
+</html>

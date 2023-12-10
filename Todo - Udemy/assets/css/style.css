@@ -1,0 +1,175 @@
+/* Variables */
+:root {
+  --bg-image: url(../circle-scatter-haikei.svg);
+  --glass-bg-start: rgba(0, 49, 86, 0.6);
+  --glass-bg-end: rgba(9, 41, 65, 0);
+  --content-bg-start: rgba(23, 43, 60, 0.6);
+  --content-bg-end: rgba(0, 18, 32, 0);
+  --button-bg: #a7233a;
+  --submit-button-bg: #ffa928;
+  --input-bg: rgb(72, 72, 72);
+  --text-color: white;
+  --placeholder-color: rgb(217, 217, 217);
+  --border-color: rgba(255, 255, 255, 0.2);
+  --scrollbar-color: rgba(0, 0, 0, 0.8);
+  --scrollbar-track-color: rgba(0, 0, 0, 0.5);
+  --blur-effect: blur(20px);
+  --border-radius: 6px;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+/* Body */
+body {
+  background: var(--bg-image) center/cover no-repeat;
+  width: 100%;
+  height: 100vh;
+  padding: 1rem 0;
+}
+
+.container {
+  width: 60%;
+  margin: 0 auto;
+}
+
+/* Glass Section */
+.glass {
+  width: 80%;
+  background: linear-gradient(
+    135deg,
+    var(--glass-bg-start),
+    var(--glass-bg-end)
+  );
+  backdrop-filter: var(--blur-effect);
+  -webkit-backdrop-filter: var(--blur-effect);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  padding: 1rem 0 0 0;
+  margin: 0.5rem auto;
+}
+
+.glass h1 {
+  text-align: center;
+  color: var(--text-color);
+}
+
+.glass form {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  gap: 1rem;
+}
+
+.glass form input[type="text"],
+.glass form textarea {
+  border: none;
+  color: var(--text-color);
+  border-radius: var(--border-radius);
+  width: 90%;
+  background-color: var(--input-bg);
+  padding: 12px;
+  font-size: 1.2rem;
+}
+
+.glass form textarea {
+  height: 13vh;
+}
+
+.glass form input[type="submit"] {
+  width: 50%;
+  margin: 1rem 0 0 0;
+  padding: 0.6rem;
+  background-color: var(--submit-button-bg);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.glass form input[type="text"]:focus,
+.glass form textarea:focus {
+  outline: 1px solid rgb(255, 255, 198);
+}
+
+.glass form input[type="text"]::placeholder,
+.glass form textarea::placeholder {
+  color: var(--placeholder-color);
+}
+
+/* Content Section */
+.contents {
+  margin: 1rem 0;
+  padding: 2rem;
+  background: linear-gradient(
+    135deg,
+    var(--content-bg-start),
+    var(--content-bg-end)
+  );
+  backdrop-filter: var(--blur-effect);
+  -webkit-backdrop-filter: var(--blur-effect);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-height: 40vh;
+}
+
+.contents::-webkit-scrollbar {
+  width: 12px;
+}
+
+.contents::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px var(--scrollbar-track-color);
+  border-radius: 10px;
+}
+
+.contents::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px var(--scrollbar-color);
+}
+
+.contents .content {
+  background-color: var(--input-bg);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contents .content .content__text {
+  width: 80%;
+}
+
+.contents .content .content__text h2 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-color);
+  text-transform: capitalize;
+  letter-spacing: 0.15rem;
+}
+
+.contents .content .content__text p {
+  color: rgb(162, 162, 162);
+}
+
+.contents .content .content__button button {
+  width: 100%;
+  padding: 0.8rem 2.5rem;
+  border: none;
+  border-radius: var(--border-radius);
+  text-transform: uppercase;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  cursor: pointer;
+}

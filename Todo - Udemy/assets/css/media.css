@@ -1,0 +1,79 @@
+/* Media Queries */
+@media only screen and (max-width: 1000px) {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .container {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .glass {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .glass h1 {
+    font-size: 1.5rem;
+  }
+  .glass form {
+    margin: 1rem 0;
+  }
+  .glass form input[type="text"],
+  .glass form textarea {
+    width: 100%;
+    font-size: 1rem;
+  }
+  .glass form input[type="submit"] {
+    width: 100%;
+    margin: 0.8rem 0 0 0;
+    padding: 0.6rem;
+    background-color: #ffa928;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  /* ///// */
+
+  .contents {
+    margin: 0.8rem 0;
+    padding: 1rem 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    max-height: 46vh;
+  }
+
+  .contents .content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contents .content .content__text,
+  .contents .content .content__button {
+    width: 100%;
+  }
+
+  .contents .content .content__text h2 {
+    font-size: 1.3rem;
+  }
+
+  .contents .content .content__text p {
+    margin-top: 0.5rem;
+  }
+
+  .contents .content .content__button button.content__delete {
+    width: 100%;
+    padding: 0.4rem;
+    color: white;
+    cursor: pointer;
+  }
+}
