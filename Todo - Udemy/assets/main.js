@@ -1,8 +1,9 @@
-const tasks = [
+const tasks = JSON.parse(localStorage.getItem("tasks")) || [
   {
     _id: "0832ueiofalwfeljf",
     title: "Title of Task 1",
     body: "Lorem ipsum dolor amet",
+    createdAt: new Date().getTime(),
   },
 ];
 
@@ -22,15 +23,22 @@ const tasks = [
   form.addEventListener("submit", onFormSubmitHandler);
   contents.addEventListener("click", onDeleteHandler);
 
+  renderAllTasks(objectOfTasks);
+
   function renderAllTasks(tasksList) {
     if (!tasksList) {
-      console.error("Передайте список задач");
+      console.error("Pass the list of tasks");
       return;
     }
 
+    // Sort tasks by createdAt property
+    const sortedTasks = Object.values(tasksList).sort(
+      (a, b) => b.createdAt - a.createdAt
+    );
+
     const fragment = document.createDocumentFragment();
 
-    Object.values(tasksList).forEach((task) => {
+    sortedTasks.forEach((task) => {
       const content = listItemTemplate(task);
       fragment.appendChild(content);
     });
@@ -56,8 +64,6 @@ const tasks = [
     return content;
   }
 
-  renderAllTasks(objectOfTasks);
-
   function onFormSubmitHandler(e) {
     e.preventDefault();
     const titleValue = inputTitle.value;
@@ -74,6 +80,7 @@ const tasks = [
     contents.insertAdjacentElement("afterbegin", contentItem);
 
     form.reset();
+    saveTasksToLocalStorage(objectOfTasks);
   }
 
   function createNewTask(title, body) {
@@ -82,9 +89,11 @@ const tasks = [
       body,
       completed: false,
       _id: `task-${Math.random()}`,
+      createdAt: new Date().getTime(),
     };
 
     objectOfTasks[newTask._id] = newTask;
+    saveTasksToLocalStorage(objectOfTasks);
 
     return { ...newTask };
   }
@@ -93,6 +102,9 @@ const tasks = [
     const { title } = objectOfTasks[id];
     let isConfirm = confirm(`Are you sure to delete this task <${title}> ?`);
     if (!isConfirm) return isConfirm;
+
+    delete objectOfTasks[id];
+    saveTasksToLocalStorage(objectOfTasks);
 
     return isConfirm;
   }
@@ -111,5 +123,9 @@ const tasks = [
 
       deleteTaskFromDOM(parent, confirmed);
     }
+  }
+
+  function saveTasksToLocalStorage(tasks) {
+    localStorage.setItem("tasks", JSON.stringify(Object.values(tasks)));
   }
 })(tasks);
